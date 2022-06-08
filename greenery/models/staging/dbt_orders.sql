@@ -12,5 +12,5 @@ order_id
 , shipping_service
 , estimated_delivery_at
 , delivered_at
-status
+, status
 FROM {{source('tutorial','orders')}}
