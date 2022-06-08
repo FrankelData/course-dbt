@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+
+  - name: tutorial # name of the source 
+    schema: public # this is the schema our raw data lives in
+    database: dbt # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+      - name: superheroes 
+        loaded_at_field: created_at
+        description: >
+          Contains demographic information about each superhero
+      - name: addresses
+        description: >
+          Contains address details of all all users who have an address, and all addresses which have orders orders associated.
+      - name: events
+        loaded_at_field: created_at
+        description: >
+          Contains time series event state data associated with product orders placed by users.
+      - name: order_items
+        description: >
+          Contains the quantity of products requested with a given order_id.
+      - name: orders
+        loaded_at_field: created_at
+        description: >
+          Contains the references to the detaisl of all orders placed.
+      - name: products
+        description: >
+          Contains pricing and inventory details of all products offered by the company
+      - name: promos
+        description: > 
+          Contains the details of promotions associated with orders.
+      - name: users
+        loaded_at_field: updated_at
+        description: >
+          Contains all customer informaiton tracked by this application.
+
+

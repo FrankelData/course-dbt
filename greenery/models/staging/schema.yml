@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: stg_dbt_tutorial_tables
+    description: Staging schema for the source data of the dbt tutorial. 
